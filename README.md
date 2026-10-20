@@ -200,8 +200,8 @@ CA Copilot algorithms are built strictly aligned with official regulatory standa
 
 #### 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/ca-automation.git
-cd ca-automation
+git clone https://github.com/VibeCoderAyan/CA-Copilot-Automation.git
+cd CA-Copilot-Automation
 ```
 
 #### 2. Install dependencies:

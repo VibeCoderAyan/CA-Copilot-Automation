@@ -3,7 +3,7 @@
 This directory contains compiled Windows executable installers (`CA Copilot Setup 1.0.0.exe`).
 
 ### 📦 Download Pre-built Installers
-Pre-compiled Windows installers are available on the [GitHub Releases](https://github.com/your-username/ca-automation/releases) page.
+Pre-compiled Windows installers are available on the [GitHub Releases](https://github.com/VibeCoderAyan/CA-Copilot-Automation/releases) page.
 
 ### 🛠️ Build Locally
 To compile a fresh Windows installer on your local machine:
