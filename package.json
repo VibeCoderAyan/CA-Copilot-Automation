@@ -1,0 +1,75 @@
+{
+  "name": "ca-copilot",
+  "version": "1.0.0",
+  "description": "Intelligent, Offline-First Audit & Tax Automation Suite for Chartered Accountants",
+  "author": "CA Copilot Team",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "server": "npx tsx server/index.ts",
+    "test": "npx tsx src/utils/engine.test.ts",
+    "test:backend": "npx tsx server/tests/backendEngine.test.ts && npx tsx server/tests/advancedModules.test.ts && npx tsx server/tests/newBackendFeatures.test.ts && npx tsx server/tests/form3cdAndGstTriple.test.ts && npx tsx server/tests/exportIntegrity.test.ts && npx tsx server/tests/backendUpgrades.test.ts && npx tsx server/tests/newBackend6Features.test.ts",
+    "test:all": "npm test && npm run test:backend",
+    "build": "tsc -b && vite build",
+    "electron:dev": "electron .",
+    "build:desktop": "tsc -b && vite build && electron-builder --win",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.cacopilot.app",
+    "productName": "CA Copilot",
+    "directories": {
+      "output": "installer"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "public/icon.ico"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CA Copilot",
+      "installerIcon": "public/icon.ico",
+      "uninstallerIcon": "public/icon.ico",
+      "installerHeaderIcon": "public/icon.ico"
+    }
+  },
+  "dependencies": {
+    "autoprefixer": "^10.6.1",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.57.0",
+    "pdfjs-dist": "^4.10.38",
+    "postcss": "^8.5.30",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^3.4.19",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jszip": "^3.4.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.9.1",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.81.0",
+    "png-to-ico": "^3.0.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}

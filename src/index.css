@@ -1,0 +1,374 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: #F8F9FA;
+    color: #111827;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Native Desktop UX - Disable unwanted dragging of images & links */
+  img, a {
+    -webkit-user-drag: none;
+  }
+
+  /* Professional tabular numbers for financial figures */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom crisp scrollbars for financial data tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Print utilities and professional styling for financial reports, vouchers, and workpapers */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 10mm 12mm 10mm;
+  }
+
+  /* Reset body and root viewport locks that prevent multi-page printing */
+  html,
+  body,
+  #root,
+  .app-root {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Force exact background colors and borders to render in print/PDF */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* 1. Globally hide interactive chrome: buttons, navbars, sidebars, dropzones, toasts */
+  header,
+  aside,
+  nav,
+  button,
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"],
+  .no-print,
+  .print\:hidden,
+  [data-print-hide="true"],
+  [data-upload-zone],
+  .dropzone,
+  .border-dashed,
+  [role="tablist"],
+  [data-tab-group],
+  .toast-container,
+  [aria-live="polite"] {
+    display: none !important;
+  }
+
+  /* 2. Hide search bars, filter dropdowns, and search inputs */
+  input[type="search"],
+  input[placeholder*="Search" i],
+  input[placeholder*="Filter" i],
+  input[placeholder*="filter" i],
+  input[placeholder*="search" i] {
+    display: none !important;
+  }
+
+  /* 3. Strip interactive input styling so form values appear as clean, borderless report text */
+  input:not([type="file"]):not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    resize: none !important;
+  }
+
+  /* 4. Unclip height and overflow so tables and long reports expand across pages */
+  main,
+  div,
+  section,
+  article {
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  /* 5. Reset main workspace canvas padding */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  /* 6. Convert dark/gray background cards into clean white printing cards */
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-slate-50,
+  .bg-slate-100,
+  .bg-amber-50,
+  .bg-red-50,
+  .bg-blue-50,
+  .bg-emerald-50,
+  .bg-green-50 {
+    background-color: #ffffff !important;
+  }
+
+  /* 7. Subtle 1px borders for report sections */
+  .border,
+  .border-gray-200,
+  .border-gray-300 {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* 8. Reveal print-only elements */
+  .print-only,
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:inline-block {
+    display: inline-block !important;
+  }
+
+  .print\:flex {
+    display: flex !important;
+  }
+
+  /* 9. Professional Table Pagination & Structure */
+  table {
+    page-break-inside: auto !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8.5pt !important;
+    margin-top: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 8px !important;
+    font-size: 7.5pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  td {
+    border: 1px solid #e2e8f0 !important;
+    padding: 5px 8px !important;
+    color: #1e293b !important;
+    font-size: 8pt !important;
+  }
+
+  /* Right-align numbers and currencies */
+  td.text-right,
+  th.text-right,
+  .font-mono {
+    text-align: right !important;
+  }
+
+  /* 10. Page break utilities */
+  .page-break-before,
+  .print\:break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-after,
+  .print\:break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .page-break-inside-avoid,
+  .print\:break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* Toast Notification Progress Animation */
+@keyframes toast-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-toast-progress {
+  animation: toast-progress linear forwards;
+}
+
+/* ===================================================
+   APPLE & LINEAR FLUID ANIMATION SYSTEM
+   =================================================== */
+@keyframes appleSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes appleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appleScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-apple-in {
+  animation: appleSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-apple-fade {
+  animation: appleFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-apple-scale {
+  animation: appleScaleIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Linear-Grade Card Physics */
+.apple-card {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
+}
+
+.apple-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+
+.apple-card:active {
+  transform: scale(0.985);
+  transition-duration: 0.08s;
+}
+
+@keyframes tabContentFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-tab-content {
+  animation: tabContentFadeSlide 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-in {
+  animation: cardEntrance 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Electron Frameless Window Drag Regions & Controls */
+.app-drag-region {
+  -webkit-app-region: drag;
+}
+
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Ensure interactive elements inside or under drag regions receive clicks cleanly */
+button, input, select, textarea, a, [role="button"] {
+  -webkit-app-region: no-drag;
+}
+
