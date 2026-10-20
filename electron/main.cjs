@@ -115,10 +115,8 @@ ipcMain.handle('dialog:showOpenDialog', async (_event, options) => {
   return await dialog.showOpenDialog(mainWindow, options);
 });
 
-ipcMain.on('app:notification', (_event, { title, body }) => {
-  if (Notification.isSupported()) {
-    new Notification({ title, body }).show();
-  }
+ipcMain.on('app:notification', () => {
+  // All notifications disabled per user request
 });
 
 app.whenReady().then(() => {

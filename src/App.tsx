@@ -593,13 +593,12 @@ export function App() {
     document.body.scrollTop = 0;
   }, [selectedTool, selectedCategory, activeNav]);
 
-  const showToast = (title: string, description?: string, type: 'success' | 'error' | 'info' = 'success') => {
-    const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`;
-    setToasts((prev) => [...prev, { id, title, description, type }]);
+  const showToast = (_title: string, _description?: string, _type: 'success' | 'error' | 'info' = 'success') => {
+    // All notifications and popups disabled per user request
   };
 
-  const dismissToast = (id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
+  const dismissToast = (_id: string) => {
+    // No-op
   };
 
   const handleNavSelect = (item: NavItem) => {

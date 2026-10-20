@@ -99,16 +99,7 @@ export const saveFileNative = async (
 /**
  * Displays OS-level desktop notification
  */
-export const sendDesktopNotification = (title: string, body: string): void => {
-  if (typeof window === 'undefined' || !('Notification' in window)) return;
-
-  if (Notification.permission === 'granted') {
-    new Notification(title, { body, icon: './favicon.ico' });
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        new Notification(title, { body, icon: './favicon.ico' });
-      }
-    });
-  }
+export const sendDesktopNotification = (_title: string, _body: string): void => {
+  // All desktop notifications disabled per user request
+  return;
 };
