@@ -3,7 +3,7 @@
 <img src="./public/logo.png" alt="CA Copilot Official Logo" width="128" height="128" />
 
 # CA Copilot
-### **Intelligent, Offline-First Audit & Tax Automation Suite for Chartered Accountants**
+### **Intelligent, Offline-First Audit & Tax Automation for Chartered Accountants**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Platform: Windows & Web](https://img.shields.io/badge/Platform-Windows%20%7C%20Web-0078D6?style=for-the-badge&logo=windows&logoColor=white)](#-getting-started)
